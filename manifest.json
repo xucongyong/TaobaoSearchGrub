@@ -1,33 +1,24 @@
 {
-  "name": "taobao_search",
-  "version": "1.2",
-  "description": "taobao_search",
-  "content_scripts": [
-  {
-    "matches": ["https://s.taobao.com/search?*"],
-    "js": ["content.js"]
-  }],
-  "permissions": ["activeTab","tabs", "declarativeContent", "onActivated","storage"],
-  "options_page": "options.html",
-  "background": {
-    "matches": ["https://s.taobao.com/search?*"],
-    "scripts": ["background.js"],
-    "persistent": false
-  },
-  "page_action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "images/get_started16.png",
-      "32": "images/get_started32.png",
-      "48": "images/get_started48.png",
-      "128": "images/get_started128.png"
-    }
-  },
+  "manifest_version": 2,
+
+  "name": "淘宝优质产品挖掘机taobao_search",
+  "description": "删除天猫并按销量排序delete Tmall shop &&sort sales of the taobao search",
+  "version": "1.9",
   "icons": {
-    "16": "images/get_started16.png",
-    "32": "images/get_started32.png",
-    "48": "images/get_started48.png",
-    "128": "images/get_started128.png"
+    "48": "48x48.png"
   },
-  "manifest_version": 2
+
+  "permissions": [
+    "tabs", "<all_urls>"
+  ],
+"content_scripts": [
+    {
+      "matches": [ "*://s.taobao.com/search*" ],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "48x48.png",
+    "default_popup": "popup.html"
+  }
 }

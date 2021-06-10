@@ -1,3 +1,6 @@
+// Copyright 2018 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
 function auto_sale_sort() {
     var href = location.search;
     /* 天猫搜索 */
@@ -26,21 +29,19 @@ function auto_delete_tmall_shop() {
         }
     }
 };
+function init_delete_shop() {
+    if(document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded',afterDOMLoaded);
+    } else {
+        afterDOMLoaded();
+    }
+
+    function afterDOMLoaded(){
+        setTimeout(function(){
+        auto_delete_tmall_shop()
+        }, 100); 
+    }
+}
 
 auto_sale_sort()
-
-
-
-if(document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded',afterDOMLoaded);
-} else {
-    afterDOMLoaded();
-}
-
-function afterDOMLoaded(){
-    setTimeout(function(){
-    auto_delete_tmall_shop()
-    }, 100); 
-}
-
-
+init_delete_shop()
